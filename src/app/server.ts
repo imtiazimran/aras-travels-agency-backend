@@ -14,3 +14,5 @@ async function server() {
         console.log('Error starting server:', error);
     }
 }
+
+server() 
