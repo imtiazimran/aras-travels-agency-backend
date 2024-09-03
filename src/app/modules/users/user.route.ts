@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { createUser } from "./user.control";
 
-const route = Router();
+const router = Router();
 
-route.post("/create", createUser);
+router.post("/create", createUser);
 
 
 
-export const userRoute = route
+export const userRoute = router

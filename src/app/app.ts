@@ -3,12 +3,15 @@ import bodyParser from "body-parser"
 const app: Application = express()
 import cors from "cors"
 import cookieParser from "cookie-parser"
-
+import router from "./routes"
+import notFound from "./middlewares/notFound"
 
 
 app.use(cors())
 app.use(bodyParser.json())
 app.use(cookieParser())
+
+app.get("/api/v1", router)
 
 app.get("/", (req: Request, res: Response) => {
     res.send(`
@@ -38,5 +41,7 @@ app.get("/", (req: Request, res: Response) => {
         </html>
     `);
 });
+
+app.use(notFound)
 
 export default app
