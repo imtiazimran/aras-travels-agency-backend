@@ -11,9 +11,12 @@ const userSchema = new Schema<TUser>({
         unique: true,
         required: true
     },
+    picture: {
+        type: String,
+        
+    },
     role: {
         type: String,
-        required: true,
         enum: ["user", "admin", "moderator"],
         default: "user"
 

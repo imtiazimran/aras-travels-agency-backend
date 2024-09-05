@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { createUser } from "./user.control";
+import { getAllUsers } from "./user.control";
+import isAuth from "../../middlewares/auth";
 
 const router = Router();
 
-router.post("/create", createUser);
+router.get("/all", isAuth(), getAllUsers);
 
 
 

@@ -6,10 +6,16 @@ import cookieParser from "cookie-parser"
 import router from "./routes"
 import notFound from "./middlewares/notFound"
 
-
-app.use(cors())
 app.use(bodyParser.json())
 app.use(cookieParser())
+
+app.use(cors(
+    {
+        origin: ["http://localhost:5173"],
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true
+    }
+))
 
 app.use("/api/v1", router)
 

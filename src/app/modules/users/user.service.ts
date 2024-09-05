@@ -1,6 +1,6 @@
 import { User } from "./user.model"
-import { TUser } from "./user.validation"
 
-export const createUserInDB = async (user: TUser) => {
-     return await User.create(user)
+
+export const getAllUsersFromDB = async () => {
+    return await User.find()
 }
