@@ -6,18 +6,16 @@ import cookieParser from "cookie-parser"
 import router from "./routes"
 import notFound from "./middlewares/notFound"
 
-app.use(bodyParser.json())
-app.use(cookieParser())
+app.use(cors({
+    origin: ["http://localhost:5173", "https://avvisaagency.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
 
-app.use(cors(
-    {
-        origin: ["http://localhost:5173", "https://avvisaagency.vercel.app/"],
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        credentials: true
-    }
-))
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use("/api/v1", router);
 
-app.use("/api/v1", router)
 
 app.get("/", (req: Request, res: Response) => {
     res.send(`
