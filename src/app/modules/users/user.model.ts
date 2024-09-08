@@ -15,12 +15,21 @@ const userSchema = new Schema<TUser>({
         type: String,
         
     },
+    number: {
+        type: String,
+        unique: true
+
+    },
+    address: {
+        type: String,
+
+    },
     role: {
         type: String,
         enum: ["user", "admin", "moderator"],
         default: "user"
 
     }
-})
+}, { timestamps: true }); 
 
 export const User = model<TUser>("User", userSchema)

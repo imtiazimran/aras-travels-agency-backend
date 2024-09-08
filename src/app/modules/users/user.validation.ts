@@ -4,6 +4,8 @@ const userSchema = z.object({
         email: z.string().email(),
         name: z.string(),
         picture: z.string().optional(),
+        number: z.string().optional(),
+        address: z.string().optional(),
         role: z.string()
 })
 
