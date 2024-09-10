@@ -10,6 +10,7 @@ const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const routes_1 = __importDefault(require("./routes"));
 const notFound_1 = __importDefault(require("./middlewares/notFound"));
+const globalErrorHandler_1 = __importDefault(require("./middlewares/globalErrorHandler"));
 app.use((0, cors_1.default)({
     origin: ["http://localhost:5173", "https://avvisaagency.vercel.app"],
     methods: ["GET", "POST", "PUT", "DELETE"],
@@ -46,5 +47,6 @@ app.get("/", (req, res) => {
         </html>
     `);
 });
+app.use(globalErrorHandler_1.default);
 app.use(notFound_1.default);
 exports.default = app;

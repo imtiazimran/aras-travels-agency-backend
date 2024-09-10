@@ -36,10 +36,13 @@ export const getMe = catchAsync(async (req, res) => {
 });
 
 export const updateUser = catchAsync(async (req, res) => {
+    const { email } = req.user!;
+    const data = req.body
     const user = await updateUserInfoInDB(
-        { email: req.user?.email } as unknown as string,
-        { data: req.body } as unknown as TUser
+        email as unknown as string,
+        data as unknown as TUser
     );
+    console.log("controller", user);
     return sendResponse(res, {
         statusCode: 200,
         success: true,

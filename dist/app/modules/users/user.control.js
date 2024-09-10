@@ -45,8 +45,10 @@ exports.getMe = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0
     });
 }));
 exports.updateUser = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
-    const user = yield (0, user_service_1.updateUserInfoInDB)({ email: (_a = req.user) === null || _a === void 0 ? void 0 : _a.email }, { data: req.body });
+    const { email } = req.user;
+    const data = req.body;
+    const user = yield (0, user_service_1.updateUserInfoInDB)(email, data);
+    console.log("controller", user);
     return (0, sendResponse_1.default)(res, {
         statusCode: 200,
         success: true,

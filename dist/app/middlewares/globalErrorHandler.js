@@ -19,37 +19,38 @@ const globalErrorHandler = (err, _req, res, _next) => {
             message: "something went wrong"
         }
     ];
+    // console.log("globalErrorHandler", err.code);
     if (err instanceof zod_1.ZodError) {
         const simplifiedError = (0, handleZodError_1.default)(err);
-        statusCode = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.statusCode;
-        message = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.message;
-        errorSources = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.errorSources;
+        statusCode = (simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.statusCode) || statusCode;
+        message = (simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.message) || message;
+        errorSources = (simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.errorSources) || errorSources;
     }
     else if ((err === null || err === void 0 ? void 0 : err.name) === 'ValidationError') {
         const simplifiedError = (0, handleValidationError_1.default)(err);
-        statusCode = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.statusCode;
-        message = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.message;
-        errorSources = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.errorSources;
+        statusCode = (simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.statusCode) || statusCode;
+        message = (simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.message) || message;
+        errorSources = (simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.errorSources) || errorSources;
     }
     else if ((err === null || err === void 0 ? void 0 : err.name) === 'CastError') {
         const simplifiedError = (0, handleCastError_1.default)(err);
-        statusCode = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.statusCode;
-        message = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.message;
-        errorSources = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.errorSources;
+        statusCode = (simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.statusCode) || statusCode;
+        message = (simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.message) || message;
+        errorSources = (simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.errorSources) || errorSources;
     }
     else if (err.code === 11000) {
         const simplifiedError = (0, handleDuplicateError_1.default)(err);
-        statusCode = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.statusCode;
-        message = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.message;
-        errorSources = simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.errorSources;
+        statusCode = (simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.statusCode) || statusCode;
+        message = (simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.message) || message;
+        errorSources = (simplifiedError === null || simplifiedError === void 0 ? void 0 : simplifiedError.errorSources) || errorSources;
     }
     else if (err instanceof AppError_1.default) {
-        statusCode = err.statusCode;
-        message = err.message;
+        statusCode = err.statusCode || statusCode;
+        message = err.message || message;
         errorSources = [
             {
                 path: "",
-                message: err === null || err === void 0 ? void 0 : err.message
+                message: (err === null || err === void 0 ? void 0 : err.message) || message
             }
         ];
     }

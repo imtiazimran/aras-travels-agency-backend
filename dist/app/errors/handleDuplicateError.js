@@ -1,18 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const handleDuplicateError = (err) => {
-    const match = err.message.match(/"([^"]*)"/);
-    const extractedMessage = match && match[1];
+    // Extract the field and value causing the duplicate key error
+    const match = err.errmsg.match(/(["'])(\\?.)*?\1/);
+    console.log("handleDuplicateError", err.errmsg);
     const errorSources = [
         {
-            path: '',
-            message: `${extractedMessage} is already exists`
+            path: err.codeName,
+            message: `${match[0]} is already exists`
         }
     ];
     const statusCode = 400;
     return {
         statusCode,
-        message: "Validation error",
+        message: "Duplicate value error",
         errorSources
     };
 };

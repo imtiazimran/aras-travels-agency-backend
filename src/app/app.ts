@@ -5,6 +5,7 @@ import cors from "cors"
 import cookieParser from "cookie-parser"
 import router from "./routes"
 import notFound from "./middlewares/notFound"
+import globalErrorHandler from "./middlewares/globalErrorHandler"
 
 app.use(cors({
     origin: ["http://localhost:5173", "https://avvisaagency.vercel.app"],
@@ -45,6 +46,8 @@ app.get("/", (req: Request, res: Response) => {
         </html>
     `);
 });
+
+app.use(globalErrorHandler)
 
 app.use(notFound)
 
