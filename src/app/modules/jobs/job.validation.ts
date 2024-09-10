@@ -5,8 +5,10 @@ const jobSchema = z.object({
     country: z.string(),
     description: z.string(),
     requirement: z.string(),
-    salary_range: z.number(),
+    minimum: z.number(),
+    maximum: z.number(),
     job_type: z.string(),
+    vacancy: z.number(),
     status: z.string(),
 
 })

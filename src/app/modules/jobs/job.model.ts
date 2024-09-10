@@ -18,7 +18,11 @@ const jobSchema = new Schema<TJob>({
         type: String,
         required: true
     },
-    salary_range: {
+    minimum: {
+        type: Number,
+        required: true
+    },
+    maximum: {
         type: Number,
         required: true
     },
@@ -26,6 +30,10 @@ const jobSchema = new Schema<TJob>({
         type: String,
         required: true,
         enum: ["full_time", "part_time", "contract"]
+    },
+    vacancy: {
+        type: Number,
+        required: true
     },
     status: {
         type: String,

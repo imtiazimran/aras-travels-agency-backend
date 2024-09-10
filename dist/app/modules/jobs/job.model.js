@@ -19,7 +19,11 @@ const jobSchema = new mongoose_1.Schema({
         type: String,
         required: true
     },
-    salary_range: {
+    minimum: {
+        type: Number,
+        required: true
+    },
+    maximum: {
         type: Number,
         required: true
     },
@@ -27,6 +31,10 @@ const jobSchema = new mongoose_1.Schema({
         type: String,
         required: true,
         enum: ["full_time", "part_time", "contract"]
+    },
+    vacancy: {
+        type: Number,
+        required: true
     },
     status: {
         type: String,

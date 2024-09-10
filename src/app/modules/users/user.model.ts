@@ -26,7 +26,7 @@ const userSchema = new Schema<TUser>({
     },
     role: {
         type: String,
-        enum: ["user", "admin", "moderator"],
+        enum: ["user", "admin", "candidate"],
         default: "user"
 
     }

@@ -61,6 +61,6 @@ exports.deleteJobById = (0, catchAsync_1.default)((req, res) => __awaiter(void 0
         statusCode: 200,
         success: true,
         message: "Job Deleted Successfully",
-        data: job
+        data: null
     });
 }));

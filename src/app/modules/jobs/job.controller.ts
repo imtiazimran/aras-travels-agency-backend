@@ -51,6 +51,6 @@ export const deleteJobById = catchAsync(async (req, res) => {
         statusCode: 200,
         success: true,
         message: "Job Deleted Successfully",
-        data: job
+        data: null
     });
 })
